@@ -1,7 +1,7 @@
 #ifndef NOTE_H
 #define NOTE_H
 
-#include "theory.h"
+#include "helpers.h"
 
 /**
  * This class represents a musical note

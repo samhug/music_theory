@@ -1,7 +1,7 @@
 #ifndef SCALE_TEMPLATE_H
 #define SCALE_TEMPLATE_H
 
-#include "theory.h"
+#include "helpers.h"
 
 /**
  * This class represents a scale template for a musical scale.

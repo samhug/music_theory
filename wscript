@@ -14,7 +14,7 @@ top = '.'
 out = 'build'
 
 def options(opt):
-    opt.load('compiler_cxx boost unittest_gtest doxygen')
+    opt.load('compiler_cxx unittest_gtest')
 
 def configure(conf):
     conf.load('compiler_cxx boost unittest_gtest doxygen')
@@ -36,7 +36,6 @@ def build(bld):
                         'src/note.cc',
                         'src/scale.cc',
                         'src/scale_template.cc',
-                        'src/theory.cc',
                       ],
         includes    = 'include',
         #use = 'BOOST',
@@ -48,7 +47,7 @@ def build(bld):
                         'src/tests/note_unittest.cc', 'src/note.cc',
                         'src/tests/scale_unittest.cc', 'src/scale.cc',
                         'src/tests/scale_template_unittest.cc', 'src/scale_template.cc',
-                        'src/tests/theory_unittest.cc', 'src/theory.cc',
+                        'src/tests/helpers_unittest.cc',
                       ],
         includes    = 'src include',
         use         = 'BOOST',

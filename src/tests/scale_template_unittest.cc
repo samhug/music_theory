@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 
-//#include "theory.h"
 #include "scale_template.h"
 
 TEST(ScaleTemplate, name) {

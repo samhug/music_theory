@@ -1,7 +1,7 @@
 #ifndef SCALE_H
 #define SCALE_H
 
-#include "theory.h"
+#include "helpers.h"
 #include "scale_template.h"
 #include "note.h"
 
