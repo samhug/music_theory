@@ -1,7 +1,7 @@
 .waf-*
 .lock-*
 .unittest-gtest/
-unittest_gtest.pyc
+*.pyc
 
 *.swp
 
