@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "scale.h"
 
 /**
@@ -86,22 +88,23 @@ size_t Scale::note_index(Note note) const
  * Calculates the given interval on the scale starting at the given note.
  *
  * @param[in]   note    The note the interval should start on
- * @param[in]   deg    The degree of the interval
+ * @param[in]   size The size of the interval
  * @return A Note object note on the end of the interval
  */
-Note Scale::interval(Note note, int deg) const
+Note Scale::interval(Note note, int size) const
 {
-    // The zero-based index of the note on the scale
-    int i = this->note_index(note);
+    // The zero-indexed degree of the note on the scale
+    int s_deg = this->note_index(note);
 
-    // The new note's #
-    note_t new_i = this->tonic() + this->note_offset(i + deg);
+    int pitch_delta = this->note_offset(s_deg + size) - this->note_offset(s_deg);
 
-    //int octave_delta = (new_i - note.note() - this->tonic()) / 12;
-    //int octave_delta = (new_i - this->note_offset(i)) / 12;
-    int octave_delta = (this->tonic() + this->note_offset(i + deg) - this->note_offset(i)) / 12;
 
-    Note new_note(note.octave() + octave_delta, new_i % 12);
+    // The new note's pitch
+    note_t e_pitch = (note.note() + pitch_delta) % 12;
+
+    int octave_delta = (note.note() + pitch_delta) / 12;
+
+    Note new_note(note.octave() + octave_delta, e_pitch);
 
     return new_note;
 }
