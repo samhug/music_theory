@@ -5,25 +5,25 @@
 /**
  * Constructor for the Note class
  *
- * @param[in]   n   The unwraped note number (e.g [octave_n]*12 + [note_n])
+ * @param[in]   n   The unwraped note number (e.g [octave_n]*12 + [pitch_n])
  */
 Note::Note(note_t n)
 {
     this->_octave = n / 12;
-    this->_note = n % 12;
+    this->_pitch = n % 12;
 }
 
 /**
  * Overloaded constructor to initialize the Note class using an octave and a
- * note number.
+ * pitch number.
  *
  * @param[in]   octave   The octave number
- * @param[in]   n        The wraped note number
+ * @param[in]   pitch    The pitch number
  */
-Note::Note(note_t octave, note_t n)
+Note::Note(note_t octave, note_t pitch)
 {
     this->_octave = octave;
-    this->_note = n;
+    this->_pitch = pitch;
 }
 
 /** Deconstructor */
@@ -37,7 +37,7 @@ Note::~Note() {}
 string Note::name() const
 {
     std::stringstream out;
-    out << NOTE_SYMBOLS[_note] << _octave;
+    out << NOTE_SYMBOLS[_pitch] << _octave;
     return out.str();
 }
 
@@ -52,13 +52,13 @@ note_t Note::octave() const
 }
 
 /**
- * Returns the note number within the octave (will be between 0-7 inclusive)
+ * Returns the pitch number (will be between 0-7 inclusive)
  *
- * @return The note nuber
+ * @return The pitch nuber
  */
-note_t Note::note() const
+note_t Note::pitch() const
 {
-    return this->_note;
+    return this->_pitch;
 }
 
 /**
@@ -72,13 +72,13 @@ void Note::octave(note_t val)
 }
 
 /**
- * Sets the note
+ * Sets the pitch
  *
- * @param[in]   val The note number
+ * @param[in]   pitch The pitch number
  */
-void Note::note(note_t val)
+void Note::pitch(note_t pitch)
 {
-    this->_note = val;
+    this->_pitch = pitch;
 }
 
 /**
@@ -88,7 +88,7 @@ void Note::note(note_t val)
  */
 note_t Note::midi_note() const
 {
-    return (this->octave() * 12) + this->_note - 3;
+    return (this->octave() * 12) + this->_pitch - 3;
 }
 
 /**
@@ -99,7 +99,7 @@ note_t Note::midi_note() const
  */
 bool Note::operator == (const Note& s) const
 {
-    return (note() == s.note() && octave() == s.octave());
+    return (pitch() == s.pitch() && octave() == s.octave());
 }
 
 #include <iostream>
@@ -108,5 +108,5 @@ bool Note::operator == (const Note& s) const
  */
 std::ostream& operator<<(std::ostream& os, const Note& note)
 {
-    return os << "Note[ octave=" << note.octave() << ", note=" << note.note() << " ]";
+    return os << "Note[ octave=" << note.octave() << ", pitch=" << note.pitch() << " ]";
 }

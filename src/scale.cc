@@ -43,30 +43,30 @@ note_t Scale::tonic() const
 }
 
 /**
- * Return the tonic offset of nth note in the scale.
+ * Return the tonic offset of nth pitch in the scale.
  * If n>7 the scale wraps but the offset increaces
  *
- * @param[in]   n   The note number
+ * @param[in]   n   The pitch number
  * @return The tonic offset
  */
-int Scale::note_offset(int n) const
+int Scale::pitch_offset(int n) const
 {
     return (n/7*12) + (12 + this->pattern.at(n % 7) - this->tonic()) % 12;
 }
 
 /**
- * Finds the given note in the scale.
+ * Finds the given pitch in the scale.
  *
- * @param[in]   note   The note to find
- * @return The note index in our scale if it exists. Otherwise it returns a NULL value.
+ * @param[in]   pitch   The pitch to find
+ * @return The pitch index in our scale if it exists. Otherwise it returns a NULL value.
  */
-size_t Scale::note_index(note_t note) const
+size_t Scale::pitch_index(note_t pitch) const
 {
-    size_t i = distance(this->pattern.begin(), find(this->pattern.begin(), this->pattern.end(), note));
+    size_t i = distance(this->pattern.begin(), find(this->pattern.begin(), this->pattern.end(), pitch));
 
-    // If the note isn't in the scale
+    // If the pitch isn't in the scale
     if (i == this->pattern.size()) {
-        throw new string ("Note not found");
+        throw new string ("Pitch not found");
         //TODO: Do I really want to use exceptions?
     }
 
@@ -74,35 +74,37 @@ size_t Scale::note_index(note_t note) const
 }
 
 /**
- * Helper function to finds the given note in the scale.
+ * Helper function to finds the given pitch in the scale.
  *
  * @param[in]   note   The note to find
- * @return The zero-based index of the note in our scale if it exists. Otherwise it returns a NULL value.
+ * @return The zero-based index of the pitch in our scale if it exists. Otherwise it returns a NULL value.
  */
-size_t Scale::note_index(Note note) const
+/*
+size_t Scale::pitch_index(Note note) const
 {
-    return note_index(note.note());
+    return pitch_index(note.pitch());
 }
+*/
 
 /**
  * Calculates the given interval on the scale starting at the given note.
  *
  * @param[in]   note    The note the interval should start on
  * @param[in]   size The size of the interval
- * @return A Note object note on the end of the interval
+ * @return A Note object representing the note on the end of the interval
  */
 Note Scale::interval(Note note, int size) const
 {
-    // The zero-indexed degree of the note on the scale
-    int s_deg = this->note_index(note);
+    // The zero-indexed degree of the pitch on the scale
+    int s_deg = this->pitch_index(note.pitch());
 
-    int pitch_delta = this->note_offset(s_deg + size) - this->note_offset(s_deg);
+    int pitch_delta = this->pitch_offset(s_deg + size) - this->pitch_offset(s_deg);
 
 
     // The new note's pitch
-    note_t e_pitch = (note.note() + pitch_delta) % 12;
+    note_t e_pitch = (note.pitch() + pitch_delta) % 12;
 
-    int octave_delta = (note.note() + pitch_delta) / 12;
+    int octave_delta = (note.pitch() + pitch_delta) / 12;
 
     Note new_note(note.octave() + octave_delta, e_pitch);
 

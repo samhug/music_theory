@@ -10,17 +10,17 @@ class Note
 {
 public:
     Note(note_t n);
-    Note(note_t octave, note_t n);
+    Note(note_t octave, note_t pitch);
 
     virtual ~Note();
 
     string name() const;
 
     note_t octave() const;
-    note_t note() const;
+    note_t pitch() const;
 
     void octave(note_t val);
-    void note(note_t val);
+    void pitch(note_t pitch);
 
     note_t midi_note() const;
 
@@ -28,7 +28,7 @@ public:
 
 private:
     note_t _octave;
-    note_t _note;
+    note_t _pitch;
 
 public:
     /** Constructs a Note object from a MIDI note number */

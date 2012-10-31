@@ -11,7 +11,7 @@ TEST(Scale, MainTest) {
 
     EXPECT_EQ("Cmajor", scale.name());
 
-    // The first note in the scale should be a C
+    // The first pitch in the scale should be a C
     EXPECT_EQ(3, scale.tonic());
 }
 
@@ -24,69 +24,69 @@ TEST(Scale, from_key) {
 
     EXPECT_EQ("Cmajor", scale.name());
 
-    // The first note in the scale should be a C
+    // The first pitch in the scale should be a C
     EXPECT_EQ(3, scale.tonic());
 
 }
 
 
 /**
- * Test retrieving the tonic offset of the nth note in a scale
+ * Test retrieving the tonic offset of the nth pitch in a scale
  */
-TEST(Scale, note_offset) {
+TEST(Scale, pitch_offset) {
     Scale scale = Scale::from_key("Cmajor");
 
-    EXPECT_EQ(0, scale.note_offset(0));
-    EXPECT_EQ(2, scale.note_offset(1));
-    EXPECT_EQ(4, scale.note_offset(2));
-    EXPECT_EQ(5, scale.note_offset(3));
-    EXPECT_EQ(7, scale.note_offset(4));
-    EXPECT_EQ(9, scale.note_offset(5));
-    EXPECT_EQ(11, scale.note_offset(6));
+    EXPECT_EQ(0, scale.pitch_offset(0));
+    EXPECT_EQ(2, scale.pitch_offset(1));
+    EXPECT_EQ(4, scale.pitch_offset(2));
+    EXPECT_EQ(5, scale.pitch_offset(3));
+    EXPECT_EQ(7, scale.pitch_offset(4));
+    EXPECT_EQ(9, scale.pitch_offset(5));
+    EXPECT_EQ(11, scale.pitch_offset(6));
 }
 
 /**
- * Test retrieving the tonic offset when the note index is in a different octave
+ * Test retrieving the tonic offset when the pitch index is in a different octave
  */
-TEST(Scale, note_offset_OCTAVE_SPAN) {
+TEST(Scale, pitch_offset_OCTAVE_SPAN) {
     Scale scale = Scale::from_key("Cmajor");
 
-    EXPECT_EQ(12, scale.note_offset(7));
-    EXPECT_EQ(14, scale.note_offset(8));
-    EXPECT_EQ(16, scale.note_offset(9));
-    EXPECT_EQ(17, scale.note_offset(10));
-    EXPECT_EQ(19, scale.note_offset(11));
+    EXPECT_EQ(12, scale.pitch_offset(7));
+    EXPECT_EQ(14, scale.pitch_offset(8));
+    EXPECT_EQ(16, scale.pitch_offset(9));
+    EXPECT_EQ(17, scale.pitch_offset(10));
+    EXPECT_EQ(19, scale.pitch_offset(11));
 }
 
 /**
- * Test retrieving the tonic offset when the note index is negative
+ * Test retrieving the tonic offset when the pitch index is negative
  */
 /*
-TEST(Scale, note_offset_NEGATIVE) {
+TEST(Scale, pitch_offset_NEGATIVE) {
     Scale scale = Scale::from_key("Cmajor");
 
-    EXPECT_EQ(-1, scale.note_offset(-1));
-    EXPECT_EQ(-3, scale.note_offset(-2));
-    EXPECT_EQ(-5, scale.note_offset(-3));
-    EXPECT_EQ(-7, scale.note_offset(-4));
-    EXPECT_EQ(-8, scale.note_offset(-5));
-    EXPECT_EQ(-10, scale.note_offset(-6));
-    EXPECT_EQ(-12, scale.note_offset(-7));
+    EXPECT_EQ(-1, scale.pitch_offset(-1));
+    EXPECT_EQ(-3, scale.pitch_offset(-2));
+    EXPECT_EQ(-5, scale.pitch_offset(-3));
+    EXPECT_EQ(-7, scale.pitch_offset(-4));
+    EXPECT_EQ(-8, scale.pitch_offset(-5));
+    EXPECT_EQ(-10, scale.pitch_offset(-6));
+    EXPECT_EQ(-12, scale.pitch_offset(-7));
 }
 */
 
-TEST(Scale, note_index) {
+TEST(Scale, pitch_index) {
     Scale scale = Scale::from_key("Cmajor");
 
-    EXPECT_EQ(0, scale.note_index(3));
-    EXPECT_EQ(1, scale.note_index(5));
-    EXPECT_EQ(2, scale.note_index(7));
-    EXPECT_EQ(3, scale.note_index(8));
-    EXPECT_EQ(4, scale.note_index(10));
-    EXPECT_EQ(5, scale.note_index(0));
-    EXPECT_EQ(6, scale.note_index(2));
+    EXPECT_EQ(0, scale.pitch_index(3));
+    EXPECT_EQ(1, scale.pitch_index(5));
+    EXPECT_EQ(2, scale.pitch_index(7));
+    EXPECT_EQ(3, scale.pitch_index(8));
+    EXPECT_EQ(4, scale.pitch_index(10));
+    EXPECT_EQ(5, scale.pitch_index(0));
+    EXPECT_EQ(6, scale.pitch_index(2));
 
-    //EXPECT_THROW(scale.note_index(1), );
+    //EXPECT_THROW(scale.pitch_index(1), );
 
 }
 

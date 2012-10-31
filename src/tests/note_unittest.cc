@@ -6,7 +6,7 @@ TEST(Note, Initialization) {
     Note note(3, 5);
 
     EXPECT_EQ(3, note.octave());
-    EXPECT_EQ(5, note.note());
+    EXPECT_EQ(5, note.pitch());
 }
 
 TEST(Note, comparison_operator) {
@@ -24,7 +24,7 @@ TEST(Note, from_midi_note) {
     Note note = Note::from_midi_note(2*12 + 6 -3);
 
     EXPECT_EQ(2, note.octave());
-    EXPECT_EQ(6, note.note());
+    EXPECT_EQ(6, note.pitch());
 }
 
 TEST(Note, octave) {
@@ -35,12 +35,12 @@ TEST(Note, octave) {
     EXPECT_EQ(4, note.octave());
 }
 
-TEST(Note, note) {
+TEST(Note, pitch) {
     Note note(0, 0);
     
-    note.note(6);
+    note.pitch(6);
 
-    EXPECT_EQ(6, note.note());
+    EXPECT_EQ(6, note.pitch());
 }
 
 TEST(Note, midi_note) {

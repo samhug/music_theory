@@ -20,10 +20,10 @@ public:
     /** The ScaleTemplate to use for the Scale */
     const ScaleTemplate *tmpl;
 
-    int note_offset(int n) const;
+    int pitch_offset(int n) const;
 
-    size_t note_index(note_t note) const;
-    size_t note_index(Note note) const;
+    size_t pitch_index(note_t pitch) const;
+    //size_t pitch_index(Note note) const;
 
     Note interval(Note note, int size) const;
 
