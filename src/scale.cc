@@ -94,9 +94,12 @@ Note Scale::interval(Note note, int deg) const
     // The zero-based index of the note on the scale
     int i = this->note_index(note);
 
-    int new_i = this->tonic() + this->note_offset(i + deg);
+    // The new note's #
+    note_t new_i = this->tonic() + this->note_offset(i + deg);
 
-    int octave_delta = new_i / 12;
+    //int octave_delta = (new_i - note.note() - this->tonic()) / 12;
+    //int octave_delta = (new_i - this->note_offset(i)) / 12;
+    int octave_delta = (this->tonic() + this->note_offset(i + deg) - this->note_offset(i)) / 12;
 
     Note new_note(note.octave() + octave_delta, new_i % 12);
 

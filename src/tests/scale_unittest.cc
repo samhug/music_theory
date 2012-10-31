@@ -92,6 +92,38 @@ TEST(Scale, note_index) {
 
 TEST(Scale, interval) {
     Scale scale = Scale::from_key("Cmajor");
+
+    Note n1(4, 3);
+    Note n2(5, 0);
+    EXPECT_EQ(n2, scale.interval(n1, 5));
+
+    Note n3(4, 5);
+    Note n4(5, 2);
+    EXPECT_EQ(n4, scale.interval(n3, 5));
+
+    Note n5(4, 7);
+    Note n6(5, 3);
+    EXPECT_EQ(n6, scale.interval(n5, 5));
+
+    Note n7(4, 8);
+    Note n8(5, 5);
+    EXPECT_EQ(n8, scale.interval(n7, 5));
+
+    Note n9(4, 10);
+    Note n10(5, 7);
+    EXPECT_EQ(n10, scale.interval(n9, 5));
+
+    Note n11(5, 0);
+    Note n12(5, 8);
+    EXPECT_EQ(n12, scale.interval(n11, 5));
+
+    Note n13(5, 2);
+    Note n14(5, 10);
+    EXPECT_EQ(n14, scale.interval(n13, 5));
+}
+
+TEST(Scale, interval_SIZE) {
+    Scale scale = Scale::from_key("Cmajor");
     Note note(4, 3);
 
     Note n1(4, 3);
@@ -116,6 +148,8 @@ TEST(Scale, interval) {
     Note n7(5, 2);
     EXPECT_EQ(n7, scale.interval(note, 6));
 }
+
+
 
 /*
 TEST(Scale, interval_NEGATIVE) {
