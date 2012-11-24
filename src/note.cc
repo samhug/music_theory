@@ -92,6 +92,18 @@ note_t Note::midi_note() const
 }
 
 /**
+ * Returns the frequency coresponding to this note
+ * See: http://en.wikipedia.org/wiki/Piano_key_frequencies
+ *
+ * @return A frequency
+ */
+double Note::freq() const
+{
+    /* The frequency of the note A4 is 440Hz. Each note is separated by a factor of 2^(1/12). */
+    return pow(TWELFTH_ROOT_OF_2, static_cast<int>(this->midi_note()) - A4_MIDI_NUM) * A4_FREQ;
+}
+
+/**
  * Compares two Note objects
  *
  * @param[in]   s   The Note object to compare too

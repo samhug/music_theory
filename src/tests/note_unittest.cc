@@ -27,6 +27,12 @@ TEST(Note, from_midi_note) {
     EXPECT_EQ(6, note.pitch());
 }
 
+TEST(Note, from_frequency) {
+    EXPECT_EQ(Note::from_frequency(220), Note::from_midi_note(57));
+    EXPECT_EQ(Note::from_frequency(440), Note::from_midi_note(69));
+    EXPECT_EQ(Note::from_frequency(880), Note::from_midi_note(81));
+}
+
 TEST(Note, octave) {
     Note note(0, 0);
     
@@ -41,6 +47,17 @@ TEST(Note, pitch) {
     note.pitch(6);
 
     EXPECT_EQ(6, note.pitch());
+}
+
+TEST(Note, freq) {
+    Note n1 = Note::from_frequency(220.0);
+    EXPECT_DOUBLE_EQ(220, n1.freq());
+
+    Note n2 = Note::from_frequency(440.0);
+    EXPECT_DOUBLE_EQ(440, n2.freq());
+
+    Note n3 = Note::from_frequency(880.0);
+    EXPECT_DOUBLE_EQ(880, n3.freq());
 }
 
 TEST(Note, midi_note) {
