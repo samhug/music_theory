@@ -10,7 +10,7 @@
  */
 Scale::Scale(note_t tonic, const ScaleTemplate *tmpl)
 {
-    assert(tonic < 8); // tonic offset must be between 0-7 inclusive
+    assert(tonic < 12); // tonic offset must be between 0-11 inclusive
 
     this->_tonic = tonic;
     this->tmpl = tmpl;
