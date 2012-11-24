@@ -1,6 +1,8 @@
 #ifndef SCALE_H
 #define SCALE_H
 
+#include <stdexcept>
+
 #include "helpers.h"
 #include "scale_template.h"
 #include "note.h"
@@ -46,7 +48,7 @@ public:
         string tonic_name;
         string pattern_name;
         if (!parse_key_name(key, &tonic_name, &pattern_name)) {
-            throw new string("Unrecognized key name");
+            throw new runtime_error("Unrecognized key name");
         }
 
         // Retrieve the note index of the matched note symbol
