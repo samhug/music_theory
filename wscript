@@ -3,13 +3,6 @@
 
 APPLICATION_NAME='theory'
 
-VERSION_MAJOR = 0
-VERSION_MINOR = 1
-VERSION_REVISION = 0
-
-
-VERSION=str(VERSION_MAJOR)+'.'+str(VERSION_MINOR)+'.'+str(VERSION_REVISION)
-
 top = '.'
 out = 'build'
 
@@ -22,12 +15,6 @@ def configure(conf):
 
     conf.check_boost(lib='regex program_options', mt=True, static=True)
 
-    conf.define('VERSION', VERSION)
-    conf.define('APPLICATION_NAME', APPLICATION_NAME)
-
-    conf.write_config_header('include/config.h')
-
-
 def build(bld):
 
     bld.stlib(
@@ -38,7 +25,7 @@ def build(bld):
                         'src/scale_template.cc',
                       ],
         includes    = 'include',
-        #use = 'BOOST',
+        use = 'BOOST',
         target=APPLICATION_NAME)
 
     bld.program(
