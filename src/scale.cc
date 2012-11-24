@@ -1,6 +1,6 @@
 #include <algorithm>
 
-#include "scale.h"
+#include "theory/scale.h"
 
 /**
  * Constructs a Scale object using the given tonic and scale template.

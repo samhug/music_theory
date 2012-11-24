@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "scale.h"
+#include "theory/scale.h"
 
 /**
  * Test that the initialization of Scale works as expected

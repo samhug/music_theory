@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "helpers.h"
+#include "theory/helpers.h"
 
 TEST(parse_key, basic_test) {
     string tonic;

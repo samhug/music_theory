@@ -1,6 +1,6 @@
 #include <sstream> // for Note::name()
 
-#include "note.h"
+#include "theory/note.h"
 
 /**
  * Constructor for the Note class

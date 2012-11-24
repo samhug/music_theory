@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "scale_template.h"
+#include "theory/scale_template.h"
 
 TEST(ScaleTemplate, name) {
     note_pattern_t pattern ({0, 1, 2, 3, 4, 5, 6});

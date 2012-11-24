@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "note.h"
+#include "theory/note.h"
 
 TEST(Note, Initialization) {
     Note note(3, 5);

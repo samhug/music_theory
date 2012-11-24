@@ -1,4 +1,4 @@
-#include "scale_template.h"
+#include "theory/scale_template.h"
 
 ScaleTemplate::ScaleTemplate()
 {
