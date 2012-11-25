@@ -15,7 +15,7 @@ def configure(conf):
     #conf.env.CXXFLAGS = ['-std=c++0x', '-Wall', '-g']
     conf.env.CXXFLAGS = ['-std=c++0x', '-Wall', '-O3']
 
-    conf.check_boost(lib='regex program_options', mt=True, static=True)
+    conf.check_boost(lib='regex', mt=True, static=True)
 
 def build(bld):
 
