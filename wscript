@@ -12,8 +12,10 @@ def options(opt):
 def configure(conf):
     conf.load('compiler_cxx boost unittest_gtest doxygen')
 
-    #conf.env.CXXFLAGS = ['-std=c++0x', '-Wall', '-g']
-    conf.env.CXXFLAGS = ['-std=c++0x', '-Wall', '-O3']
+    conf.env.append_value('CXXFLAGS', ['-std=c++0x', '-Wall', '-O3', '-flto'])
+
+    ## Debug
+    #conf.env.append_value('CXXFLAGS', '-g')
 
     conf.check_boost(lib='regex', mt=True, static=True)
 
